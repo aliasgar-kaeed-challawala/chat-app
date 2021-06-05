@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-
   static String id = "login_screen";
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -18,9 +17,12 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              height: 200.0,
-              child: Image.asset('images/logo.png'),
+            Hero(
+              tag: 'flash_img',
+              child: Container(
+                height: 200.0,
+                child: Image.asset('images/logo.png'),
+              ),
             ),
             SizedBox(
               height: 48.0,
@@ -37,13 +39,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Color(0xfffcbf49), width: 1.0),
+                  borderSide: BorderSide(color: Color(0xfffcbf49), width: 1.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Color(0xfffcbf49), width: 2.0),
+                  borderSide: BorderSide(color: Color(0xfffcbf49), width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
               ),
@@ -63,13 +63,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Color(0xfffcbf49), width: 1.0),
+                  borderSide: BorderSide(color: Color(0xfffcbf49), width: 1.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Color(0xfffcbf49), width: 2.0),
+                  borderSide: BorderSide(color: Color(0xfffcbf49), width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(32.0)),
                 ),
               ),
