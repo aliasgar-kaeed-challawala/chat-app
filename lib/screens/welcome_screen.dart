@@ -9,7 +9,30 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
+
+  AnimationController controller;
+  Animation animation;
+    @override
+  void initState() {
+    super.initState();
+    // animation = ColorTween(begin: Color(0xffd62828), end: Color(0xffeae2b7)).animate(controller);
+    controller = AnimationController(
+      duration: Duration(seconds:1),
+      vsync: this,
+      upperBound: 60.0,
+      
+    );
+    
+    controller.forward();
+    controller.addListener(() {
+      setState((){});
+      print(controller.value);
+    });
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +49,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   tag: 'flash_img',
                   child: Container(
                     child: Image.asset('images/logo.png'),
-                    height: 60.0,
+                    height: controller.value,
                   ),
                 ),
                 Text(
