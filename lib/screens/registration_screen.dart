@@ -1,6 +1,10 @@
 import 'package:chat_app_flutter/components/RoundedButton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:chat_app_flutter/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'chat_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static String id = "registration_screen";
@@ -10,6 +14,11 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+
+  String email;
+  String password;
+  final _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +40,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 48.0,
             ),
             TextField(
+              keyboardType: TextInputType.emailAddress,
+              textAlign: TextAlign.center,
               onChanged: (value) {
-                //Do something with the user input.
+                email = value;
               },
               decoration:
                   kInputDecoration.copyWith(hintText: 'Enter your email'),
@@ -41,8 +52,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 8.0,
             ),
             TextField(
+              textAlign: TextAlign.center,
               onChanged: (value) {
-                //Do something with the user input.
+                password = value;
               },
               decoration:
                   kInputDecoration.copyWith(hintText: 'Enter your password'),
@@ -52,7 +64,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 24.0,
             ),
             RoundedButton(
-                text: 'Register', color: Color(0xfff77f00), onPressed: () {}),
+                text: 'Register', color: Color(0xfff77f00), 
+                onPressed: () async{
+                try{
+                  final newUser = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+                  if(newUser!=null){
+                    Navigator.pushNamed(context, ChatScreen.id);
+                  }
+                }
+                catch(e){
+                  print(e);
+                }
+                
+
+            }),
           ],
         ),
       ),

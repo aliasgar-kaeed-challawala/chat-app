@@ -56,6 +56,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 45.0,
+                    color: Color(0xfffcbf49),
                   ),
                   child: AnimatedTextKit(
                     animatedTexts: [
@@ -71,8 +72,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             SizedBox(
               height: 30.0,
             ),
-            
-            RoundedButton(onPressed: (){Navigator.pushNamed(context, LoginScreen.id);},color: Color(0xfffcbf49), text: 'Login'),
+            //Color(0xfffcbf49)
+            RoundedButton(text: 'Log In',color: Color(0xfffcbf49), onPressed:(){Navigator.pushNamed(context, LoginScreen.id);}),
             RoundedButton(text: 'Register',color: Color(0xfff77f00), onPressed:(){Navigator.pushNamed(context, RegistrationScreen.id);}),
           ],
         ),

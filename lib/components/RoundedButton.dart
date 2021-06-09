@@ -20,7 +20,8 @@ class RoundedButton extends StatelessWidget {
           minWidth: 200.0,
           height: 45.0,
           child: Text(
-            'Register',
+            text,
+            
           ),
         ),
       ),
