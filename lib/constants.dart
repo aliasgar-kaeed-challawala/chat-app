@@ -13,12 +13,17 @@ const kMessageTextFieldDecoration = InputDecoration(
 );
 
 const kMessageContainerDecoration = BoxDecoration(
+  // color: Color(0xfffcbf49),
   border: Border(
-    top: BorderSide(color: Color(0xfff77f00), width: 2.0),
+    top: BorderSide(color: Color(0xff003049), width: 2.0),
   ),
 );
 
 const kInputDecoration = InputDecoration(
+  hintStyle: TextStyle(
+    color: Colors.white54,
+  ),
+  
   hintText: 'Enter a value',
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   border: OutlineInputBorder(
@@ -32,4 +37,5 @@ const kInputDecoration = InputDecoration(
     borderSide: BorderSide(color: Color(0xfff77f00), width: 2.0),
     borderRadius: BorderRadius.all(Radius.circular(32.0)),
   ),
+  // fillColor: Colors.white,
 );

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:chat_app_flutter/constants.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
-class LoginScreen extends StatefulWidget {  
+class LoginScreen extends StatefulWidget {
   static String id = "login_screen";
 
   @override
@@ -15,12 +15,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
-final _auth = FirebaseAuth.instance;
-String email;
-String password;
-bool spin = false;
-
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
+  bool spin = false;
 
   @override
   Widget build(BuildContext context) {
@@ -34,21 +32,26 @@ bool spin = false;
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Hero(
-                tag: 'flash_img',
-                child: Container(
-                  height: 200.0,
-                  child: Image.asset('images/logo.png'),
+              Flexible(
+                child: Hero(
+                  tag: 'flash_img',
+                  child: Container(
+                    height: 200.0,
+                    child: Image.asset('images/logo.png'),
+                  ),
                 ),
               ),
               SizedBox(
                 height: 48.0,
               ),
               TextField(
+                style: TextStyle(
+                  color: Colors.white,
+                ),
                 textAlign: TextAlign.center,
                 keyboardType: TextInputType.emailAddress,
                 onChanged: (value) {
-                 email = value;
+                  email = value;
                 },
                 decoration: kInputDecoration.copyWith(
                   hintText: 'Enter your email',
@@ -58,6 +61,9 @@ bool spin = false;
                 height: 8.0,
               ),
               TextField(
+                style: TextStyle(
+                  color: Colors.white,
+                ),
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   password = value;
@@ -73,20 +79,20 @@ bool spin = false;
               RoundedButton(
                 color: Color(0xfffcbf49),
                 text: 'Log In',
-                onPressed: () async{
+                onPressed: () async {
                   setState(() {
                     spin = true;
                   });
-                  try{
-                  final user = await _auth.signInWithEmailAndPassword(email: email, password: password);
-                  if(user!=null){
-                    Navigator.pushNamed(context, ChatScreen.id);
-                  }
-                  setState(() {
-                    spin = false;
-                  });
-                  }
-                  catch(e){
+                  try {
+                    final user = await _auth.signInWithEmailAndPassword(
+                        email: email, password: password);
+                    if (user != null) {
+                      Navigator.pushNamed(context, ChatScreen.id);
+                    }
+                    setState(() {
+                      spin = false;
+                    });
+                  } catch (e) {
                     print(e);
                   }
                 },
